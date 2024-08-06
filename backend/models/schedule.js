@@ -9,4 +9,4 @@ const scheduleSchema = new mongoose.Schema({
     },
 }, { collection: 'UCSC Schedules' });
 
-module.exports = mongoose.model('schedule', scheduleSchema);
+module.exports = mongoose.model('Schedule', scheduleSchema);

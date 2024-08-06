@@ -28,8 +28,8 @@ router.post('/register', async (req, res) => {
 router.post('/login', async (req, res) => {
     const { email, password } = req.body;
     try {
-        const userExists = await User.findone({ email: email, password: password });
-        if (!userExists) {
+        const user = await User.findone({ email, password });
+        if (!user) {
             return res.status(400).json({ message: 'User does not exists' });
         }
         res.status(200).send('User logged in');
@@ -39,10 +39,10 @@ router.post('/login', async (req, res) => {
 });
 
 // Get all users
-router.get('/', async (req, res) => {
+router.get('/getUsers', async (req, res) => {
     try {
         const users = await User.find();
-        res.json(users);
+        res.status(200).json(users);
     } catch (error) {
         res.status(500).send(error.message);
     }

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const usersSchema = new mongoose.Schema({
+const userSchema = new mongoose.Schema({
     scheduleId: {
         type: [mongoose.Schema.Types.ObjectId],
     },
@@ -15,4 +15,4 @@ const usersSchema = new mongoose.Schema({
     },
 }, { collection: 'UCSC Users' });
 
-module.exports = mongoose.model('User', usersSchema);
+module.exports = mongoose.model('User', userSchema);
