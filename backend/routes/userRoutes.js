@@ -7,7 +7,7 @@ const Schedule = require('../models/schedule');
 router.post('/register', async (req, res) => {
     const { scheduleId = [], email, password, classId = [], scheduleName = ''} = req.body;
     try {
-        const userExists = await User.findone({ email: email });
+        const userExists = await User.find({ email: email });
         if (userExists) {
             return res.status(400).json({ message: 'User already exists' });
         }
@@ -28,7 +28,7 @@ router.post('/register', async (req, res) => {
 router.post('/login', async (req, res) => {
     const { email, password } = req.body;
     try {
-        const user = await User.findone({ email, password });
+        const user = await User.find({ email: email, password: password });
         if (!user) {
             return res.status(400).json({ message: 'User does not exists' });
         }
